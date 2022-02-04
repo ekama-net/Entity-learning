@@ -16,7 +16,14 @@
                 db.SaveChanges();  //только после этого данные обновятся в бд
                 Console.WriteLine("Объекты успешно сохранены");
 
-                // получаем объекты из бд и выводим на консоль
+                foreach (var people in db.Peoples) //апдейт 
+                {
+                    people.Name += 1;
+                }
+                db.SaveChanges();
+
+                //получаем объекты из бд и выводим на консоль
+
                 var users = db.Peoples.ToList();
                 Console.WriteLine("Список объектов:");
                 foreach (People u in users)
@@ -24,11 +31,7 @@
                     Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
                 }
 
-                foreach (var people in db.Peoples) //апдейт 
-                {
-                    people.Name += 1;
-                }
-                db.SaveChanges();
+
             }
 
         }

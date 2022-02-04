@@ -7,12 +7,16 @@ public class ApplicationContext : DbContext
     public DbSet<Kid> Kids { get; set; } = null!;
     public ApplicationContext()
     {
-        Database.EnsureDeleted();
-        Database.EnsureCreated();   
+        //Database.EnsureDeleted();
+        //Database.EnsureCreated();   
+        //Database.Migrate();
     }
+
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=helloapp.db");
+        //optionsBuilder.UseSqlite("Data Source=helloapp.db");
+        optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=helloappdb;Trusted_Connection=True;");
     }
 }
