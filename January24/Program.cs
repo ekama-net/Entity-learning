@@ -23,6 +23,12 @@
                 {
                     Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
                 }
+
+                foreach (var people in db.Peoples) //апдейт 
+                {
+                    people.Name += 1;
+                }
+                db.SaveChanges();
             }
 
         }
